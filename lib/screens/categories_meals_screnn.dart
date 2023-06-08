@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../data/dummy_data.dart';
 import '../models/category.dart';
 
 class CategoriesMealsScreen extends StatelessWidget {
@@ -8,6 +9,9 @@ class CategoriesMealsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categoryMeals = dummyMeals.where((meal) {
+      return meal.categories.contains(category.id);
+    }).toList();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -15,14 +19,11 @@ class CategoriesMealsScreen extends StatelessWidget {
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Center(
-        child: Text(
-          'Receitas por Categorias ${category.id}',
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
+      body: ListView.builder(
+        itemCount: categoryMeals.length,
+        itemBuilder: (ctx, index) {
+          return Text(categoryMeals[index].title);
+        },
       ),
     );
   }

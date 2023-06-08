@@ -1,5 +1,5 @@
+import 'package:curso_cooder_exe_aulas/screens/categories_screen.dart';
 import 'package:flutter/material.dart';
-import 'screens/categories_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'RobotoCondensed',
               )),
         ),
-        home: const CategoriesScreen());
+        home: const CategoriesScreen(),
+        routes: {
+          'categories-meals': (context) => const CategoriesScreen(),
+        });
   }
 }
