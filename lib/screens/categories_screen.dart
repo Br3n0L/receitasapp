@@ -1,44 +1,27 @@
 import 'package:flutter/material.dart';
-import '../models/category.dart';
+import '../components/category_item.dart';
+import '../data/dummy_data.dart';
 
-import 'categories_meals_screnn.dart';
-
-class CategoryItem extends StatelessWidget {
-  final Category category;
-
-  const CategoryItem(
-      {super.key,
-      required this.category}); // Adicione {} para tornar o argumento opcional
-
-  void _selectCategory(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-      return CategoriesMealsScreen(category: category);
-    }));
-  }
+class CategoriesScreen extends StatelessWidget {
+  const CategoriesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => _selectCategory(context),
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          gradient: LinearGradient(
-            colors: [
-              category.color.withOpacity(0.5),
-              category.color,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Vamos Cozinhar?'),
+      ),
+      body: GridView(
+        padding: const EdgeInsets.all(25),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
         ),
-        child: Text(
-          category.title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        children: dummyCategories.map((cat) {
+          return CategoryItem(cat);
+        }).toList(),
       ),
     );
   }
