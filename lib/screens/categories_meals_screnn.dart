@@ -10,10 +10,19 @@ class CategoriesMealsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(category.title),
+        title: Text(
+          category.title,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Center(
-        child: Text('Receitas por Categorias ${category.id}'),
+        child: Text(
+          'Receitas por Categorias ${category.id}',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
       ),
     );
   }
