@@ -1,3 +1,4 @@
+import 'package:curso_cooder_exe_aulas/components/topics.dart';
 import 'package:flutter/material.dart';
 
 import '../models/meals.dart';
@@ -10,10 +11,22 @@ class MealDetailScreen extends StatelessWidget {
     final meal = ModalRoute.of(context)!.settings.arguments as Meal;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detalhes das Refeições'),
+        title: Text(meal.title),
       ),
-      body: const Center(
-        child: Text('Detalhes das Refeições'),
+      body: Column(
+        children: [
+          // ignore: sized_box_for_whitespace
+          Container(
+            height: 300,
+            width: double.infinity,
+            child: Image.network(
+              meal.imageUrl,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const TopicRecipeTitle(),
+          const TopicRecipeIngredients(),
+        ],
       ),
     );
   }
