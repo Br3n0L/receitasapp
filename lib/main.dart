@@ -2,6 +2,7 @@ import 'package:curso_cooder_exe_aulas/models/category.dart';
 import 'package:curso_cooder_exe_aulas/screens/categories_meals_screnn.dart';
 import 'package:curso_cooder_exe_aulas/screens/categories_screen.dart';
 import 'package:curso_cooder_exe_aulas/screens/meal_detail_screen.dart';
+import 'package:curso_cooder_exe_aulas/screens/settings_screens.dart';
 import 'package:curso_cooder_exe_aulas/utilis/app_routes.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +30,10 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          AppRoutes.HOME: (context) => const TabScreens(),
-          AppRoutes.MEAL_DETAIL: (context) => const MealDetailScreen(),
+          AppRoutes.home: (context) => const TabsScreen(),
+          AppRoutes.mealDetail: (context) => const MealDetailScreen(),
+          AppRoutes.settings: (context) => const SettingScreens(),
+
           // AppRoutes.CATEGORIES_MEALS: (context)=> const CategoriesMealsScreen(category: category), Entender essa questão do category required.
         });
   }

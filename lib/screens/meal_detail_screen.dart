@@ -64,7 +64,7 @@ class MealDetailScreen extends StatelessWidget {
                 },
               ),
             ),
-            _createSectionTitle(context, 'Passos'),
+            _createSectionTitle(context, 'Passos a Passo'),
             _createSectionContainer(ListView.builder(
               itemCount: meal.steps.length,
               itemBuilder: (ctx, index) {
@@ -87,6 +87,10 @@ class MealDetailScreen extends StatelessWidget {
             )),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).pop(meal.title),
+        child: const Icon(Icons.favorite),
       ),
     );
   }
